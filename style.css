@@ -1,0 +1,61 @@
+body{
+    padding: 30px;
+    font-size: 21px;
+}
+.block{
+border: 3px solid black;
+position: relative;
+max-width: 500px;
+height: 35px;
+margin-top: 100px;
+margin-left: 1000px;
+}
+.textkeep{
+    border: 1.5px solid blue;
+    max-width: 500px;
+    height: 65px;
+    position: absolute;
+    max-width: 700px;
+    height: 30px;
+    font-size: 18px;
+    font-weight: 500;
+    
+}
+.choice_1{
+    position: absolute;
+    left: 250px;
+    top: 2px;
+    width: 70px;
+    height: 30px;
+    font-size: 15px;
+}
+.add{
+    position: absolute;
+    left: 340px;
+    top: -5px;
+    font-size: 5px;
+    height: 30px;
+    max-width: 40px;
+}
+.box{
+    padding: 30px;
+    border: 3px solid rgb(201, 100, 100);
+    width: 650px;
+    height: 800px;
+    position: fixed;
+   margin-top: 100px;
+   margin-left: -100px;
+   background-color: rgb(255, 255, 255);
+}
+.step{
+    background-color: greenyellow;
+    border: 3px solid black;
+    border-radius: 5px;
+    height: 50px;
+    position: relative;
+}
+.knopka{
+    background-color: bisque;
+    position: absolute;
+    right: 20px;
+}
