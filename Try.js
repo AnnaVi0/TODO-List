@@ -9,25 +9,25 @@ if (localStorage.getItem('todo')){
   displayMessages();
 }                                                       // для хранения всех наших дел нужен будет массив
 
-                                                          // сейчас будет написан обрабботчик события
-                                                         // который будет выполнять действия, которые происходят при нажатии на кнопку
- plusButton.addEventListener('click', function(){           // отслеивает событие click и запускает function()
-                                                     // кажде новое дело мы будем записывать в объект, а этот объект в массив
-  let newTodo = {                                                //содержит данные последнего сообщения
+                                                          /
+                                                         
+ plusButton.addEventListener('click', function(){           
+                                                     
+  let newTodo = {                                                
     todo: addMessage.value, 
-    checked: false,                                         //обозначает, выполнено дело или нет, т.е по умолчанию всегда принимает значение false
-    important: false                                        // это степень важности, тк можно выбрать важным что-нибо
+    checked: false,                                         
+    important: false                                        
   };                     
   todoList.push(newTodo); 
   displayMessages();   
-  localStorage.getItem('elmnt', JSON.stringify(todoList));          //добавляет элементы в массив
+  localStorage.getItem('elmnt', JSON.stringify(todoList));          
  });
      
  let time = new Date().toLocaleDateString();
 
 
- function displayMessages(){                //будет делать перебор массива и выводить каждый объект на страницу, в виде тега li
-    let displayMessage = '';                                              //здесь todo - свойство
+ function displayMessages(){                
+    let displayMessage = '';                                              
  todoList.forEach(function(item, i){
    displayMessage += `
    <div class = 'step' id='clean_${i}'>
