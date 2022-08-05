@@ -1,36 +1,39 @@
 <!DOCTYPE html>
 <head>
-<title>TODO-list</title>
-<div class="obyortka-h1">
-<h1 class="welcome">Welcome to TODO!</h1>
-</div>
-<div class="obyortka-2"><big>Your personal assistant for a successful schedule. Are you ready to start?</big></div>
-<div class="obyortka-3" ></div>
-    <link rel="stylesheet" href="C:\Users\User\Desktop\Июль/style.css">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Краденое </title>
+    <link rel="stylesheet" href="C:\Users\User\Desktop\Июль/Стили.css">
     
 </head>
-<body  bgcolor="#09360a" background="C:\Users\User\Downloads/green-slate.jpg">
-<div class="block">
-    <div class="keep-textkeep">
-        <input class="textkeep" type="text">
+<body bgcolor="#09360a" background="C:\Users\User\Downloads/green-slate.jpg">
+    <h1>TodoList</h1>
+   
+    <div class="add-todo-wrapper">
+        <div class="input-wrapper">
+            <input  type="text" id="description-task" class="text-zone">
+            <select class="import-choice">
+               <option>High</option>
+               <option>Medium</option>
+               <option>Low</option>
+            </select>
+        </div>
+        <div class="button-wrapper">
+            <object  type="image/svg+xml" data="icon.svg" id="add-task-btn" class = 'dobav-button' >
+                <img src="file:///C:/Users/User/Downloads/primary-albumfoldernew.svg" width="30" height="30">
+                </object>
+        </div>
     </div>
-        <object class = 'add' type="image/svg+xml" data="icon.svg">
-            <img src="C:\Users\User\Desktop\Бакба/плюс.png">
-            </object>
- 
-    <select class="choice_1">
-        <option value='High'>High</option>
-        <option value='Medium'>Medium</option>
-        <option value="Low">Low</option>
-    </select>
-    <div class="box">
-        <ul class="todo" id="all"></ul>
-    </div>
-    
-</div>
-    
+    <div class="todos-wrapper">
+        <img class="photo-na-phone" src="C:\Users\User\Downloads/green-slate.jpg">
+        </div>
 
+    </div>
+  
+   <script src="C:\Users\User\Desktop\Июль/Proverka.js"></script>
 </body>
-<script  src='C:\Users\User\Desktop\Июль/todolist.js'>
-</script>
 </html>
