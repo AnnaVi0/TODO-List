@@ -1,50 +1,98 @@
-let addMessage = document.querySelector('.textkeep'),
-    plusButton = document.querySelector('.add'),
-     todo = document.querySelector('.todo')
-     ;
-
-let todoList = [];    
-if (localStorage.getItem('todo')){
-  todoList = JSON.parse(localStorage.getItem('todo'));
-  displayMessages();
-}                                                       
-
-                                                         
-                                                        
- plusButton.addEventListener('click', function(){           
-                                                     
-  let newTodo = {                                                
-    todo: addMessage.value, 
-    checked: false,                                         
-    important: false                                       
-  };                     
-  todoList.push(newTodo); 
-  displayMessages();   
-  localStorage.getItem('elmnt', JSON.stringify(todoList));          
- });
-     
- let time = new Date().toLocaleDateString();
-
-
- function displayMessages(){                
-    let displayMessage = '';                                              
- todoList.forEach(function(item, i){
-   displayMessage += `
-   <div class = 'step' id='clean_${i}'>
-  <li>
-  <input  type='checkbox' id='item_${i}' ${item.checked ? 'checked': '' }>
-  <label for='item_${i}'>${item.todo}</label> 
-  </li>
-  <button class = 'knopka' onclick = 'loseIt()'>Удалить</button>
-  </div>
-  `;
-   todo.innerHTML = displayMessage;                  
+const addTaskBtn = document.getElementById('add-task-btn');
+const deskTaskInput = document.getElementById('description-task');
+const todosWrapper = document.querySelector('.todos-wrapper');
  
- });                                                                                                 
-  };
-   
-  /*function loseIt(clean_${i}){
-    document.getElementById(clean_${i});
+let tasks;
+!localStorage.tasks ? tasks = [] : tasks = JSON.parse(localStorage.getItem('tasks'));
+
+let todoItemElmnts = []; 
+
+let highElem = [];
+let mediumElem = [];
+let lowElem = [];
+
+
+function Task(description){
+  this.description = description;
+  this.completed = false;
+}
+
+
+let createTemplate = (task, index) => {
+  return `
+  <div class="todo-item" ${task.completed ? "checked" : ""}>
+            <div class="description"  contenteditable="true">${task.description}</div>
+            <div class="buttons">
+                <input onclick = 'completeTask(${index})'class = "btn-complete" type="checkbox" ${task.completed ? "checked" : ""}>
+                <button onclick = 'deleteTask(${index})'class="btn-delete">Delete</button>
+                
+                <button onclick = 'addHigh(${index})'>High</button>
+                <button onclick = 'addMedium(${index})'>Medium</button>
+                <button onclick = 'addLow(${index})'>Low</button>
+            </div>
+           
+  `
+
+}
+
+
+const fillHtmlList = () => {
+ todosWrapper.innerHTML = '';
+ if (tasks.length > 0 ) {
+   tasks.forEach((item, index) => {
+    todosWrapper.innerHTML += createTemplate(item, index);
+   });
+   todoItemElmnts = document.querySelectorAll('.todo-item')
+ }
+} 
+fillHtmlList();
+  
+
+ const updateLocal = () => {
+ localStorage.setItem('tasks', JSON.stringify(tasks));
+ } 
+
+ const completeTask = index =>{
+  tasks[index].completed = !tasks[index].completed;
+  if (tasks[index].completed) {
+    todoItemElmnts[index].classList.add('checked');
+  } else {
+    todoItemElmnts[index].classList.remove('checked');
   }
-   
-  */
+    
+    updateLocal();
+    fillHtmlList();
+
+  }
+
+
+addTaskBtn.addEventListener('click', () => { 
+  tasks.push(new Task(deskTaskInput.value));
+  updateLocal();
+  fillHtmlList();
+  deskTaskInput.value = '';
+})
+
+const  deleteTask = (index) => {
+ setTimeout(() => {
+  tasks.splice(index, 1);
+ updateLocal();
+ fillHtmlList();
+ }, 150)
+}
+const addHigh = (index) => {
+  let hElem = tasks[index]
+  highElem.push(hElem);
+  console.log(highElem);
+}
+const addMedium = (index) => {
+  let mElem = tasks[index].description;
+  mediumElem.push(mElem);
+  console.log(highElem);
+}
+const addLow = (index) => {
+  let lElem = tasks[index]
+  lowElem.push(lElem);
+  console.log(highElem);
+}
+  
